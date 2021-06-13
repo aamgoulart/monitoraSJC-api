@@ -5,8 +5,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const swaggerUi = require("swagger-ui-express");
-const swaggerSetup = require("./swaggerSetup");
+// const swaggerUi = require("swagger-ui-express");
+// const swaggerSetup = require("./swaggerSetup");
 
 const app = express();
 
@@ -27,11 +27,11 @@ app.get("/", (req, res) => {
 require("./app/routes/cases.routes")(app);
 require("./app/routes/vaccination.routes")(app);
 
-app.use(
-  '/api-docs',
-  swaggerUi.serve, 
-  swaggerUi.setup(swaggerSetup)
-);
+// app.use(
+//   '/api-docs',
+//   swaggerUi.serve, 
+//   swaggerUi.setup(swaggerSetup)
+// );
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
