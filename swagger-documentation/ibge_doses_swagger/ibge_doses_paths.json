@@ -1,0 +1,223 @@
+{
+    "/api/doses": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar dados de vacinação geral",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "required": true,
+                    "type": "string",
+                    "description": "Quantidade máxima de documentos a serem retornados"
+                },
+                {
+                    "in": "query",
+                    "name": "skip",
+                    "required": true,
+                    "type": "string",
+                    "description": "Número da página de busca | paginação"
+                },
+                {
+                    "in": "query",
+                    "name": "date",
+                    "required": true,
+                    "type": "string",
+                    "description": "Data de atualização | formato: YYYY-MM-DD"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/DosesList"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/city": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar municípios cadastrados",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "_id": "string",
+                        "municipio": "string",
+                        "cod_ibge": "string"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/doses-of-day": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "start",
+                    "required": false,
+                    "type": "string",
+                    "description": "Data de início | formato: YYYY-MM-DD"
+                },
+                {
+                    "in": "query",
+                    "name": "end",
+                    "required": false,
+                    "type": "string",
+                    "description": "Data final | formato: YYYY-MM-DD"
+                }
+            ],
+            "summary": "Pegar doses do dia",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "_id": "string",
+                        "doseOne": "string",
+                        "dosetwo": "string",
+                        "appliedDoses": "string"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/doses-of-day/city": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar doses do dia",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "required": true,
+                    "type": "string",
+                    "description": "Quantidade máxima de documentos a serem retornados"
+                },
+                {
+                    "in": "query",
+                    "name": "skip",
+                    "required": true,
+                    "type": "string",
+                    "description": "Número da página de busca | paginação"
+                },
+                {
+                    "in": "query",
+                    "name": "term",
+                    "required": false,
+                    "type": "string",
+                    "description": "Nome da cidade ou parte do nome para busca com regex"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/DosesList"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/doses-of-day/last-update": {
+        "get": {
+            "deprecated": true,
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar doses com base em uma data de atualização",
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "date",
+                    "required": true,
+                    "type": "string",
+                    "description": "Data de atualização | formato: YYYY-MM-DD"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/DosesList"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/{state}/current-vaccination-data": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar total de doses com porcentagem, com base em uma data especificada.",
+            "parameters": [
+                {
+                    "in": "router",
+                    "name": "state",
+                    "required": true,
+                    "type": "string",
+                    "description": "Estado em que se procura tais dados"
+                },
+                {
+                    "in": "query",
+                    "name": "date",
+                    "type": "string",
+                    "description": "Data de atualização | formato: YYYY-MM-DD"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "dose1": "double",
+                        "dose2": "double",
+                        "populacao_vacinada_dose2": "double"
+                    }
+                }
+            }
+        }
+    },
+    "/api/doses/{state}/ranking-cities-by-vaccination-progress": {
+        "get": {
+            "tags": [
+                "Doses"
+            ],
+            "summary": "Pegar ranking das 10 cidades com melhor progresso de vacinação, em uma data específica.",
+            "parameters": [
+                {
+                    "in": "router",
+                    "name": "state",
+                    "required": true,
+                    "type": "string",
+                    "description": "Estado em que se procura tais dados"
+                },
+                {
+                    "in": "query",
+                    "name": "date",
+                    "type": "string",
+                    "description": "Data de atualização | formato: YYYY-MM-DD"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/DosesList"
+                    }
+                }
+            }
+        }
+    }
+}

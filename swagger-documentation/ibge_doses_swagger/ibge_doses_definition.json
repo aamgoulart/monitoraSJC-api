@@ -1,0 +1,48 @@
+{
+    "Doses": {
+        "required": [
+            "cod_ibge",
+            "dose1",
+            "dose2",
+            "doses_aplicadas",
+            "data_atualizacao"
+        ],
+        "properties": {
+            "_id": {
+                "type": "string",
+                "uniqueItems": true
+            },
+            "municipio": {
+                "type": "string"
+            },
+            "cod_ibge": {
+                "type": "string"
+            },
+            "data_atualizacao": {
+                "type": "string"
+            },
+            "populacao": {
+                "type": "string"
+            },
+            "dose1": {
+                "type": "string"
+            },
+            "dose2": {
+                "type": "string"
+            },
+            "doses_aplicadas": {
+                "type": "string"
+            },
+            "doses_aplicadas_por_distribuidas": {
+                "type": "string"
+            },
+            "pop_vacinada_por_total": {
+                "type": "string"
+            }
+        }
+    },
+    "DosesList": {
+        "type": "array",
+        "$ref": "#/definitions/Doses"
+    }
+}
