@@ -23,10 +23,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to application." });
 });
 
-require("./app/routes/vacinacao.routes")(app);
-require("./app/routes/ibge_doses.routes")(app);
-require("./app/routes/ibge_novo.routes")(app);
+
 require("./app/routes/cases.routes")(app);
+require("./app/routes/vaccination.routes")(app);
 
 app.use(
   '/api-docs',

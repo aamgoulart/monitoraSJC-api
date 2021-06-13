@@ -11,7 +11,7 @@ db.doses = require("./ibge_doses.model.js")(mongoose);
 db.cidades = require("./ibge_cidades.model.js")(mongoose);
 db.ibgeDosesFull = require("./ibge_novo_com_doses.js")(mongoose);
 db.cases = require("./cases.model")(mongoose);
-
+db.vaccination = require("./vaccination.model")(mongoose);
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
