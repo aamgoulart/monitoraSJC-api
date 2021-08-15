@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/cases.routes")(app);
 require("./app/routes/vaccination.routes")(app);
+require("./app/routes/covid.routes")(app);
 
 // app.use(
 //   '/api-docs',

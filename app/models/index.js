@@ -9,6 +9,7 @@ db.url = process.env.DB_URL;
 
 db.cases = require("./cases.model")(mongoose);
 db.vaccination = require("./vaccination.model")(mongoose);
+db.covid = require("./covid.model")(mongoose);
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
